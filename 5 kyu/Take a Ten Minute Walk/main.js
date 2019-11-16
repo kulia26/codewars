@@ -16,13 +16,13 @@ function isValidWalk(walk) {
   if (map.w > 0 && map.e > 0) { map.w = -map.w; }
 
   for (const key in map) {
-    if (map.hasOwnProperty(key)) {
+    if (Object.keys(map).includes(key)) {
       const length = map[key];
       lengths.push(length);
     }
   }
 
-  console.log(map);
+  //console.log(map);
   const distanse = lengths.reduce((acc, val) => acc + val);
   const way = lengths.reduce((acc, val) => Math.abs(acc) + Math.abs(val));
 
@@ -33,7 +33,7 @@ function isValidWalk(walk) {
 }
 
 
-console.dir(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
-console.dir(isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e']));
-console.dir(isValidWalk(['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
+console.dir(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']) === true);
+console.dir(isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e']) === false);
+console.dir(isValidWalk(['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's']) === false);
 
